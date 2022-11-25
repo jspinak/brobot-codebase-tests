@@ -1,5 +1,8 @@
 package io.github.jspinak.brobotintegrationtests.actions;
 
+import io.github.jspinak.brobotintegrationtests.actions.classify.ClassifyTest;
+import io.github.jspinak.brobotintegrationtests.actions.findColor.ColorTest;
+import io.github.jspinak.brobotintegrationtests.actions.motion.MotionTest;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +16,9 @@ public class ActionTests {
     private MoveMouseTest moveMouseTest;
     private GetTextTest getTextTest;
     private VanishTest vanishTest;
+    private ClassifyTest classifyTest;
+    private MotionTest motionTest;
+    private ColorTest colorTest;
 
     /**
      * Tests basic and composite actions.
@@ -28,7 +34,8 @@ public class ActionTests {
      */
     public ActionTests(TestState testState, DefineTest defineTest, FindTest findTest, ClickTest clickTest,
                        DragTest dragTest, MoveMouseTest moveMouseTest, GetTextTest getTextTest,
-                       VanishTest vanishTest) {
+                       VanishTest vanishTest, ClassifyTest classifyTest, MotionTest motionTest,
+                       ColorTest colorTest) {
         this.testState = testState;
         this.defineTest = defineTest;
         this.findTest = findTest;
@@ -37,9 +44,16 @@ public class ActionTests {
         this.moveMouseTest = moveMouseTest;
         this.getTextTest = getTextTest;
         this.vanishTest = vanishTest;
+        this.classifyTest = classifyTest;
+        this.motionTest = motionTest;
+        this.colorTest = colorTest;
     }
 
     public void run() {
+        //motionTest.test();
+        colorTest.test();
+        //classifyTest.classify();
+        /*
         testState.getState().setProbabilityExists(100);
         defineTest.run();
         findTest.run();
@@ -48,5 +62,7 @@ public class ActionTests {
         moveMouseTest.run();
         getTextTest.run();
         vanishTest.run();
+
+         */
     }
 }

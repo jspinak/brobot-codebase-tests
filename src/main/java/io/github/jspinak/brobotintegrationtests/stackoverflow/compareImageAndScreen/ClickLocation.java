@@ -1,4 +1,4 @@
-package io.github.jspinak.brobotintegrationtests.actions;
+package io.github.jspinak.brobotintegrationtests.stackoverflow.compareImageAndScreen;
 
 import io.github.jspinak.brobot.actions.actionExecution.Action;
 import io.github.jspinak.brobot.actions.actionOptions.ActionOptions;
@@ -7,8 +7,6 @@ import io.github.jspinak.brobot.datatypes.primitives.match.Matches;
 import io.github.jspinak.brobot.datatypes.primitives.region.Region;
 import io.github.jspinak.brobot.datatypes.state.ObjectCollection;
 import io.github.jspinak.brobot.datatypes.state.stateObject.stateImageObject.StateImageObject;
-import io.github.jspinak.brobot.reports.TestOutput;
-import org.sikuli.script.Key;
 import org.springframework.stereotype.Component;
 
 import static io.github.jspinak.brobot.actions.actionOptions.ActionOptions.Action.CLICK;
@@ -16,28 +14,29 @@ import static io.github.jspinak.brobot.actions.actionOptions.ActionOptions.Actio
 import static io.github.jspinak.brobot.actions.actionOptions.ActionOptions.Find.COLOR;
 
 @Component
-public class FindTest {
+public class ClickLocation {
 
     private final Action action;
-    private final TestState testState;
+    private final RedRegionState redRegionState;
+    private final NotRedState notRedState;
 
-    public FindTest(Action action, TestState testState) {
+    public ClickLocation(Action action, RedRegionState redRegionState, NotRedState notRedState) {
         this.action = action;
-        this.testState = testState;
+        this.redRegionState = redRegionState;
+        this.notRedState = notRedState;
     }
 
-    public void run() {
-        System.out.println("\n__Find Tests__");
-        Matches matches = action.perform(new ActionOptions(), testState.getTopLeft());
-        TestOutput.assertTrue("success", true, matches.isSuccess());
-        matches.getBestMatch().ifPresent(
-                m -> TestOutput.assertTrue("Image match", 20,
-                        m.getMatch().x, 20, m.getMatch().y, 50, m.getMatch().w, 100, m.getMatch().h));
-        ActionOptions keyDown = new ActionOptions.Builder()
-                .setAction(ActionOptions.Action.KEY_DOWN)
-                .setModifiers(Key.SHIFT)
+    public Matches find() {
+        ActionOptions actionOptions = new ActionOptions.Builder()
+                .setAction(FIND)
+                .setFind(COLOR)
                 .build();
-        new Region().type("hi", Key.SHIFT);
+        return action.perform(actionOptions, redRegionState.getRedArea());
     }
 
+    public boolean click() {
+        if (find().isSuccess())
+            return action.perform(CLICK, redRegionState.getClickLocation().asObjectCollection()).isSuccess();
+        return action.perform(CLICK, notRedState.getClickLocation().asObjectCollection()).isSuccess();
+    }
 }

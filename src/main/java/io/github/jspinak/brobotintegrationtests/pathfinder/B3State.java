@@ -1,8 +1,8 @@
 package io.github.jspinak.brobotintegrationtests.pathfinder;
 
-import io.github.jspinak.brobot.database.primitives.match.MatchSnapshot;
-import io.github.jspinak.brobot.database.state.state.State;
-import io.github.jspinak.brobot.database.state.stateObject.stateImageObject.StateImageObject;
+import io.github.jspinak.brobot.datatypes.primitives.match.MatchSnapshot;
+import io.github.jspinak.brobot.datatypes.state.state.State;
+import io.github.jspinak.brobot.datatypes.state.stateObject.stateImageObject.StateImageObject;
 import io.github.jspinak.brobot.primatives.enums.StateEnum;
 import io.github.jspinak.brobot.services.StateService;
 import lombok.Getter;

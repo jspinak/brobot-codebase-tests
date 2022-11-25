@@ -1,8 +1,7 @@
 package io.github.jspinak.brobotintegrationtests;
 
 import io.github.jspinak.brobot.actions.BrobotSettings;
-import org.sikuli.script.ImagePath;
-import org.springframework.boot.SpringApplication;
+import io.github.jspinak.brobot.services.Init;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,8 +15,15 @@ public class BrobotIntegrationTestsApplication {
         ConfigurableApplicationContext context = builder.run(args);
 
         // setup brobot
-        ImagePath.setBundlePath("images.sikuli");
-        BrobotSettings.mock = true;
+        BrobotSettings.initProfilesForDynamicImages = false;
+        BrobotSettings.initProfilesForStaticfImages = false;
+        Init init = context.getBean(Init.class);
+        init.setBundlePathAndPreProcessImages("images.sikuli");
+        //ImagePath.setBundlePath(System.getProperty("user.dir")+"/images.sikuli");
+        //ImagePath.add("screenshots");
+        //System.out.println("bundle path: "+ org.sikuli.script.ImagePath.getBundlePath());
+        BrobotSettings.mock = false;
+        BrobotSettings.saveHistory = true;
 
         Tests tests = context.getBean(Tests.class);
         tests.run();

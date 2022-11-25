@@ -2,8 +2,7 @@ package io.github.jspinak.brobotintegrationtests.text;
 
 import io.github.jspinak.brobot.actions.actionExecution.Action;
 import io.github.jspinak.brobot.actions.actionOptions.ActionOptions;
-import io.github.jspinak.brobot.database.primitives.match.Matches;
-import io.github.jspinak.brobot.database.state.ObjectCollection;
+import io.github.jspinak.brobot.datatypes.state.ObjectCollection;
 import org.sikuli.script.Key;
 import org.springframework.stereotype.Component;
 

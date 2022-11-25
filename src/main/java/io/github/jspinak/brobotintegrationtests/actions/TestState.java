@@ -1,11 +1,11 @@
 package io.github.jspinak.brobotintegrationtests.actions;
 
 import io.github.jspinak.brobot.actions.actionOptions.ActionOptions;
-import io.github.jspinak.brobot.database.primitives.location.Position;
-import io.github.jspinak.brobot.database.primitives.match.MatchSnapshot;
-import io.github.jspinak.brobot.database.state.ObjectCollection;
-import io.github.jspinak.brobot.database.state.state.State;
-import io.github.jspinak.brobot.database.state.stateObject.stateImageObject.StateImageObject;
+import io.github.jspinak.brobot.datatypes.primitives.location.Position;
+import io.github.jspinak.brobot.datatypes.primitives.match.MatchSnapshot;
+import io.github.jspinak.brobot.datatypes.state.ObjectCollection;
+import io.github.jspinak.brobot.datatypes.state.state.State;
+import io.github.jspinak.brobot.datatypes.state.stateObject.stateImageObject.StateImageObject;
 import io.github.jspinak.brobot.primatives.enums.StateEnum;
 import io.github.jspinak.brobot.services.StateService;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Getter
 public class TestState {
 
-    public enum Enum implements StateEnum {
+    public enum Name implements StateEnum {
         TEST_STATE
     }
 
@@ -57,7 +57,7 @@ public class TestState {
                     .build())
             .build();
 
-    private State state = new State.Builder(Enum.TEST_STATE)
+    private State state = new State.Builder(Name.TEST_STATE)
             .withImages(topLeft, topRight, bottomLeft, bottomRight)
             .build();
 

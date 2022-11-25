@@ -23,9 +23,9 @@ public class Tests {
     }
 
     public void run() {
-        textTests.run();
+        //textTests.run();
         actionTests.run();
-        pathfinderTests.run();
-        probabilityTests.run();
+        //pathfinderTests.run();
+        //probabilityTests.run();
     }
 }
