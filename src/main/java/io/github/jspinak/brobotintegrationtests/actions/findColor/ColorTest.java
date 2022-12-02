@@ -4,6 +4,7 @@ import io.github.jspinak.brobot.actions.BrobotSettings;
 import io.github.jspinak.brobot.actions.actionExecution.Action;
 import io.github.jspinak.brobot.actions.actionOptions.ActionOptions;
 import io.github.jspinak.brobot.datatypes.primitives.region.Region;
+import io.github.jspinak.brobot.datatypes.state.ObjectCollection;
 import io.github.jspinak.brobot.datatypes.state.stateObject.stateImageObject.SearchRegions;
 import io.github.jspinak.brobotintegrationtests.actions.classify.ClassifyState;
 import org.springframework.stereotype.Component;
@@ -55,15 +56,28 @@ public class ColorTest {
                 //.keepLargerMatches(true)
                 //.setPauseBeforeBegin(2)
                 .build();
+        ActionOptions findClass = new ActionOptions.Builder()
+                .setAction(ActionOptions.Action.CLASSIFY)
+                .setMaxMatchesToActOn(1)
+                .setKmeans(4)
+                .build();
         ActionOptions histogramFind = new ActionOptions.Builder()
                 .setAction(ActionOptions.Action.FIND)
                 .setFind(ActionOptions.Find.HISTOGRAM)
                 .setMaxMatchesToActOn(5)
                 .setMinScore(.70)
                 .build();
-        action.perform(findColor, colorState.getRedDot());
+        //action.perform(findColor, colorState.getRedDot());
         //action.perform(findBar, colorState.getYellowBar());
+        //action.perform(histogramFind, colorState.getPartOfScene());
 
+        ObjectCollection target = new ObjectCollection.Builder()
+                .withImages(classifyState.getKobold())
+                .build();
+        ObjectCollection additional = new ObjectCollection.Builder()
+                .withImages(classifyState.getGrass())
+                .build();
+        action.perform(findClass, target, additional);
 
         //action.perform(findBar, colorState.getYellowBar());
 

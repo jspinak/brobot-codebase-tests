@@ -17,6 +17,7 @@ public class MotionTest {
     }
 
     public void test() {
+        /*
         ActionOptions motion = new ActionOptions.Builder()
                 .setAction(ActionOptions.Action.FIND)
                 .setFind(ActionOptions.Find.MOTION)
@@ -27,5 +28,7 @@ public class MotionTest {
                 .withImages(motionState.getScreen1(), motionState.getScreen2())
                 .build();
         action.perform(motion, screenshots);
+
+         */
     }
 }
