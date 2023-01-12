@@ -26,6 +26,10 @@ public class FindTest {
         this.testState = testState;
     }
 
+    /**
+     * The Find tests are meant to be run as mocks.
+     * The Snapshots on the Image 'getTopLeft' give the location of the matches.
+     */
     public void run() {
         System.out.println("\n__Find Tests__");
         Matches matches = action.perform(new ActionOptions(), testState.getTopLeft());
@@ -33,6 +37,7 @@ public class FindTest {
         matches.getBestMatch().ifPresent(
                 m -> TestOutput.assertTrue("Image match", 20,
                         m.getMatch().x, 20, m.getMatch().y, 50, m.getMatch().w, 100, m.getMatch().h));
+
         ActionOptions keyDown = new ActionOptions.Builder()
                 .setAction(ActionOptions.Action.KEY_DOWN)
                 .setModifiers(Key.SHIFT)

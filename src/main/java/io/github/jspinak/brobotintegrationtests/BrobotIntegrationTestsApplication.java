@@ -15,18 +15,18 @@ public class BrobotIntegrationTestsApplication {
         ConfigurableApplicationContext context = builder.run(args);
 
         // setup brobot
-        BrobotSettings.initProfilesForDynamicImages = false;
-        BrobotSettings.initProfilesForStaticfImages = false;
+        //BrobotSettings.initProfilesForDynamicImages = false;
+        //BrobotSettings.initProfilesForStaticfImages = false;
         Init init = context.getBean(Init.class);
         init.setBundlePathAndPreProcessImages("images.sikuli");
-        //ImagePath.setBundlePath(System.getProperty("user.dir")+"/images.sikuli");
-        //ImagePath.add("screenshots");
-        //System.out.println("bundle path: "+ org.sikuli.script.ImagePath.getBundlePath());
+        //init.setBundlePathAndPreProcessImages("northgard-images");
+
         BrobotSettings.mock = false;
-        BrobotSettings.saveHistory = true;
+        BrobotSettings.saveHistory = false;
 
         Tests tests = context.getBean(Tests.class);
         tests.run();
+        //tests.runNorthgard();
     }
 
 }

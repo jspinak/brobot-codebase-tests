@@ -45,7 +45,7 @@ public class ColorTest {
         BrobotSettings.saveHistory = true;
 
         BrobotSettings.mock = true;
-        BrobotSettings.screenshot = "kobolds1.png";
+        BrobotSettings.screenshots.add("kobolds1.png");
 
         ActionOptions findBar = new ActionOptions.Builder()
                 .setAction(ActionOptions.Action.FIND)
@@ -77,7 +77,7 @@ public class ColorTest {
         ObjectCollection additional = new ObjectCollection.Builder()
                 .withImages(classifyState.getGrass())
                 .build();
-        action.perform(findClass, target, additional);
+        //action.perform(findClass, target, additional);
 
         //action.perform(findBar, colorState.getYellowBar());
 
@@ -87,6 +87,6 @@ public class ColorTest {
                 .setAddY2(100)
                 //.setOffsetLocation(400, 500)
                 .build();
-        //action.perform(moveBar, colorState.getYellowBar());
+        action.perform(moveBar, colorState.getYellowBar());
     }
 }

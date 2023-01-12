@@ -1,5 +1,7 @@
 package io.github.jspinak.brobotintegrationtests.actions;
 
+import io.github.jspinak.brobot.actions.BrobotSettings;
+import io.github.jspinak.brobot.reports.Report;
 import io.github.jspinak.brobotintegrationtests.actions.classify.ClassifyTest;
 import io.github.jspinak.brobotintegrationtests.actions.findColor.ColorTest;
 import io.github.jspinak.brobotintegrationtests.actions.motion.MotionTest;
@@ -19,6 +21,7 @@ public class ActionTests {
     private ClassifyTest classifyTest;
     private MotionTest motionTest;
     private ColorTest colorTest;
+    private XmlTest xmlTest;
 
     /**
      * Tests basic and composite actions.
@@ -35,7 +38,7 @@ public class ActionTests {
     public ActionTests(TestState testState, DefineTest defineTest, FindTest findTest, ClickTest clickTest,
                        DragTest dragTest, MoveMouseTest moveMouseTest, GetTextTest getTextTest,
                        VanishTest vanishTest, ClassifyTest classifyTest, MotionTest motionTest,
-                       ColorTest colorTest) {
+                       ColorTest colorTest, XmlTest xmlTest) {
         this.testState = testState;
         this.defineTest = defineTest;
         this.findTest = findTest;
@@ -47,13 +50,16 @@ public class ActionTests {
         this.classifyTest = classifyTest;
         this.motionTest = motionTest;
         this.colorTest = colorTest;
+        this.xmlTest = xmlTest;
     }
 
     public void run() {
+        //xmlTest.writeXml();
         //motionTest.test();
-        colorTest.test();
+        //colorTest.test();
         //classifyTest.classify();
-        /*
+        BrobotSettings.mock = true;
+        if (!BrobotSettings.mock) Report.println("Mocking needs to be turned on.");
         testState.getState().setProbabilityExists(100);
         defineTest.run();
         findTest.run();
@@ -63,6 +69,8 @@ public class ActionTests {
         getTextTest.run();
         vanishTest.run();
 
-         */
+
+
+
     }
 }
