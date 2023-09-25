@@ -1,8 +1,7 @@
 package io.github.jspinak.brobotintegrationtests;
 
 import io.github.jspinak.brobot.actions.BrobotSettings;
-import org.sikuli.script.ImagePath;
-import org.springframework.boot.SpringApplication;
+import io.github.jspinak.brobot.services.Init;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,12 +15,18 @@ public class BrobotIntegrationTestsApplication {
         ConfigurableApplicationContext context = builder.run(args);
 
         // setup brobot
-        ImagePath.setBundlePath("images.sikuli");
-        BrobotSettings.packageName = "io.github.jspinak.brobotintegrationtests";
-        BrobotSettings.mock = true;
+        //BrobotSettings.initProfilesForDynamicImages = false;
+        //BrobotSettings.initProfilesForStaticfImages = false;
+        Init init = context.getBean(Init.class);
+        init.setBundlePathAndPreProcessImages("images.sikuli");
+        //init.setBundlePathAndPreProcessImages("northgard-images");
+
+        BrobotSettings.mock = false;
+        BrobotSettings.saveHistory = false;
 
         Tests tests = context.getBean(Tests.class);
         tests.run();
+        //tests.runNorthgard();
     }
 
 }

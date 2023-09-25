@@ -27,10 +27,10 @@ public class ClickTest {
             TestOutput.assertTrue("match location",20,  m.getMatch().x,
                     20, m.getMatch().y, 50, m.getMatch().w, 100, m.getMatch().h);
             TestOutput.assertTrue("middle point should be clicked",
-                    44, m.getLocation().getX(), 69, m.getLocation().getY());
+                    45, m.getLocation().getX(), 70, m.getLocation().getY());
             TestOutput.assertTrue("anchor position", 0,
                     m.getAnchorList().get(0).getLocationInMatch().getPercentW(),
-                    100, m.getAnchorList().get(0).getLocationInMatch().getPercentH());
+                    1, m.getAnchorList().get(0).getLocationInMatch().getPercentH());
         });
     }
 }

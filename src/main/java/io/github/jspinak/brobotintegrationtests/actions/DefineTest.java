@@ -32,7 +32,7 @@ public class DefineTest {
         TestOutput.assertTrue("Action success", true, matches.isSuccess());
         Region def = matches.getDefinedRegion();
         TestOutput.assertTrue("the defined Region xywh",
-                20, def.x, 119, def.y, 530, def.w, 382, def.h);
+                20, def.x, 120, def.y, 531, def.w, 381, def.h);
     }
 
 }

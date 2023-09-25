@@ -2,11 +2,18 @@ package io.github.jspinak.brobotintegrationtests.actions;
 
 import io.github.jspinak.brobot.actions.actionExecution.Action;
 import io.github.jspinak.brobot.actions.actionOptions.ActionOptions;
+import io.github.jspinak.brobot.datatypes.primitives.location.Location;
 import io.github.jspinak.brobot.datatypes.primitives.match.Matches;
 import io.github.jspinak.brobot.datatypes.primitives.region.Region;
+import io.github.jspinak.brobot.datatypes.state.ObjectCollection;
+import io.github.jspinak.brobot.datatypes.state.stateObject.stateImageObject.StateImageObject;
 import io.github.jspinak.brobot.reports.TestOutput;
 import io.github.jspinak.brobotintegrationtests.stateStructure.definedSearchRegions.StateWithDefinedSearchRegions;
 import org.springframework.stereotype.Component;
+
+import static io.github.jspinak.brobot.actions.actionOptions.ActionOptions.Action.CLICK;
+import static io.github.jspinak.brobot.actions.actionOptions.ActionOptions.Action.FIND;
+import static io.github.jspinak.brobot.actions.actionOptions.ActionOptions.Find.COLOR;
 
 @Component
 public class FindTest {
@@ -22,6 +29,10 @@ public class FindTest {
         this.stateWithDefinedSearchRegions = stateWithDefinedSearchRegions;
     }
 
+    /**
+     * The Find tests are meant to be run as mocks.
+     * The Snapshots on the Image 'getTopLeft' give the location of the matches.
+     */
     public void run() {
         simpleFindTest();
         stateWithDefinedSearchRegions.getState().setProbabilityExists(100);

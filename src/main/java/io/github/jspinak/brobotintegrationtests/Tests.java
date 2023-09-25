@@ -2,6 +2,7 @@ package io.github.jspinak.brobotintegrationtests;
 
 import io.github.jspinak.brobot.actions.BrobotSettings;
 import io.github.jspinak.brobotintegrationtests.actions.ActionTests;
+import io.github.jspinak.brobotintegrationtests.northgard.NorthgardTest;
 import io.github.jspinak.brobotintegrationtests.pathfinder.PathfinderTests;
 import io.github.jspinak.brobotintegrationtests.probabilities.ProbabilityTests;
 import io.github.jspinak.brobotintegrationtests.screenshots.ScreenshotTests;
@@ -20,10 +21,11 @@ public class Tests {
     private ScreenshotTests screenshotTests;
     private DistanceTest distanceTest;
     private TraverseModel traverseModel;
+    private final NorthgardTest northgardTest;
 
     public Tests(ActionTests actionTests, PathfinderTests pathfinderTests, ProbabilityTests probabilityTests,
                  TextTests textTests, ScreenshotTests screenshotTests, DistanceTest distanceTest,
-                 TraverseModel traverseModel) {
+                 TraverseModel traverseModel, NorthgardTest northgardTest) {
         this.actionTests = actionTests;
         this.pathfinderTests = pathfinderTests;
         this.probabilityTests = probabilityTests;
@@ -31,6 +33,7 @@ public class Tests {
         this.screenshotTests = screenshotTests;
         this.distanceTest = distanceTest;
         this.traverseModel = traverseModel;
+        this.northgardTest = northgardTest;
     }
 
     public void run() {
@@ -44,6 +47,7 @@ public class Tests {
     Tests screenshot retrieval for the StateStructure builder
      */
     private void runReal() {
+        northgardTest.run();
         //screenshotTests.getScreenshots();
         //screenshotTests.getStateImageObjects();
         //screenshotTests.build();

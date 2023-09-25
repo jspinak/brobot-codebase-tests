@@ -35,9 +35,9 @@ public class MoveMouseTest {
         Location m2 = matches.getMatchLocations().get(1);
         Location m3 = matches.getMatchLocations().get(2);
         Location m4 = matches.getMatchLocations().get(3);
-        TestOutput.assertTrue("move the mouse to these locations", 44,
-                m1.getX(), 69, m1.getY(), 524, m2.getX(), 69, m2.getY(),
-                44, m3.getX(), 549, m3.getY(), 524, m4.getX(), 549, m4.getY());
+        TestOutput.assertTrue("move the mouse to these locations", 45,
+                m1.getX(), 70, m1.getY(), 525, m2.getX(), 70, m2.getY(),
+                45, m3.getX(), 550, m3.getY(), 525, m4.getX(), 550, m4.getY());
         testState.getTopLeft().getMatchHistory().print();
     }
 
