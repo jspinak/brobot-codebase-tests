@@ -2,9 +2,9 @@ package io.github.jspinak.brobotintegrationtests.actions;
 
 import io.github.jspinak.brobot.actions.actionExecution.Action;
 import io.github.jspinak.brobot.actions.actionOptions.ActionOptions;
-import io.github.jspinak.brobot.database.primitives.match.MatchObject;
-import io.github.jspinak.brobot.database.primitives.match.MatchSnapshot;
-import io.github.jspinak.brobot.database.primitives.match.Matches;
+import io.github.jspinak.brobot.datatypes.primitives.match.MatchObject;
+import io.github.jspinak.brobot.datatypes.primitives.match.MatchSnapshot;
+import io.github.jspinak.brobot.datatypes.primitives.match.Matches;
 import io.github.jspinak.brobot.reports.TestOutput;
 import org.springframework.stereotype.Component;
 

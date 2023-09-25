@@ -56,9 +56,9 @@ public class PathfinderTests {
         TestOutput.assertTrue("paths found", 4, pathsFound.getPaths().size());
         Path path1 = pathsFound.getPaths().get(0);
         if (path1.getScore() == 4) {
-            TestOutput.assertTrue("path #1", "UNKNOWN", path1.getPath().get(0).toString(),
-                    "A1_STATE", path1.getPath().get(1).toString(), "B2_STATE", path1.getPath().get(2).toString(),
-                    "C3_STATE", path1.getPath().get(3).toString());
+            TestOutput.assertTrue("path #1", "UNKNOWN", path1.toString(),
+                    "A1_STATE", path1.toString(), "B2_STATE", path1.toString(),
+                    "C3_STATE", path1.toString());
         }
         testScores(pathsFound);
         testPreviousState();

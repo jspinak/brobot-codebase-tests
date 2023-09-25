@@ -17,6 +17,7 @@ public class BrobotIntegrationTestsApplication {
 
         // setup brobot
         ImagePath.setBundlePath("images.sikuli");
+        BrobotSettings.packageName = "io.github.jspinak.brobotintegrationtests";
         BrobotSettings.mock = true;
 
         Tests tests = context.getBean(Tests.class);

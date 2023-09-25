@@ -1,9 +1,9 @@
 package io.github.jspinak.brobotintegrationtests.probabilities;
 
-import io.github.jspinak.brobot.database.primitives.location.Position;
-import io.github.jspinak.brobot.database.state.ObjectCollection;
-import io.github.jspinak.brobot.database.state.state.State;
-import io.github.jspinak.brobot.database.state.stateObject.stateImageObject.StateImageObject;
+import io.github.jspinak.brobot.datatypes.primitives.location.Position;
+import io.github.jspinak.brobot.datatypes.state.ObjectCollection;
+import io.github.jspinak.brobot.datatypes.state.state.State;
+import io.github.jspinak.brobot.datatypes.state.stateObject.stateImageObject.StateImageObject;
 import io.github.jspinak.brobot.primatives.enums.StateEnum;
 import io.github.jspinak.brobot.services.StateService;
 import lombok.Getter;
