@@ -18,7 +18,7 @@ public class BrobotIntegrationTestsApplication {
         //BrobotSettings.initProfilesForDynamicImages = false;
         //BrobotSettings.initProfilesForStaticfImages = false;
         Init init = context.getBean(Init.class);
-        init.setBundlePathAndPreProcessImages("images.sikuli");
+        //init.setBundlePathAndPreProcessImages("images.sikuli");
         //init.setBundlePathAndPreProcessImages("northgard-images");
 
         BrobotSettings.mock = false;

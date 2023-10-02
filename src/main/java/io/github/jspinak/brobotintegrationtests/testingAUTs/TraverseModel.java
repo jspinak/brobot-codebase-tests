@@ -1,7 +1,8 @@
 package io.github.jspinak.brobotintegrationtests.testingAUTs;
 
-import io.github.jspinak.brobot.testingAUTs.ElasticClient;
+import io.github.jspinak.brobot.testingAUTs.ActionLogSender;
 import io.github.jspinak.brobot.testingAUTs.IndexTemplateCreator;
+import io.github.jspinak.brobot.testingAUTs.RestClientConnection;
 import io.github.jspinak.brobot.testingAUTs.StateTraversalService;
 import org.springframework.stereotype.Component;
 
@@ -12,28 +13,35 @@ public class TraverseModel {
 
     private StateTraversalService stateTraversalService;
     private IndexTemplateCreator indexTemplateCreator;
-    private ElasticClient elasticClient;
+    private final ActionLogSender actionLogSender;
+    private final RestClientConnection restClientConnection;
 
     public TraverseModel(StateTraversalService stateTraversalService,
                          IndexTemplateCreator indexTemplateCreator,
-                         ElasticClient elasticClient) {
+                         ActionLogSender actionLogSender,
+                         RestClientConnection restClientConnection) {
         this.stateTraversalService = stateTraversalService;
         this.indexTemplateCreator = indexTemplateCreator;
-        this.elasticClient = elasticClient;
+        this.actionLogSender = actionLogSender;
+        this.restClientConnection = restClientConnection;
     }
 
     public void run() {
-        elasticClient.init();
+        stateTraversalService.traverseAllStates();
+    }
+
+    private void previous() {
         try {
             indexTemplateCreator.create();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //stateTraversalService.traverseAllStates();
+        stateTraversalService.traverseAllStates();
         try {
-            elasticClient.sendLogsToElasticsearch();
+            actionLogSender.sendLogsToElasticsearch();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        restClientConnection.close();
     }
 }
